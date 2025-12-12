@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main container for the entire page -->
+    <div class="container">
+        <!-- Page header with title -->
+        <header>
+            <h1>Services</h1>
+            <p class="subtitle">Choose a service to get started</p>
+        </header>
+
+        <!-- Service cards grid -->
+        <main class="services-grid">
+            
+            <!-- 
+                CONVERSATIONAL BOT SERVICE 
+                This is the main service you requested - it's fully functional!
+            -->
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h2>Conversational Bot</h2>
+                <p>Chat with an AI-powered bot that can answer your questions</p>
+                <button class="service-btn" onclick="openService('chatbot.html')">
+                    Open Chat
+                </button>
+            </div>
+
+            <!-- 
+                PLACEHOLDER SERVICES
+                These are examples showing how to add more services.
+                You can implement these by:
+                1. Creating a new HTML page in /frontend
+                2. Creating backend logic in /backend/services/views.py
+                3. Adding the API endpoint in /backend/services/urls.py
+                4. Updating the onclick to point to your new page
+            -->
+
+            <!-- Example Service 2: Image Generator -->
+            <div class="service-card">
+                <div class="service-icon">🖼️</div>
+                <h2>Image Generator</h2>
+                <p>Generate images from text descriptions using AI</p>
+                <button class="service-btn service-btn-disabled" onclick="showComingSoon('Image Generator')">
+                    Coming Soon
+                </button>
+            </div>
+
+            <!-- Example Service 3: Text Summarizer -->
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <h2>Text Summarizer</h2>
+                <p>Summarize long articles or documents into key points</p>
+                <button class="service-btn service-btn-disabled" onclick="showComingSoon('Text Summarizer')">
+                    Coming Soon
+                </button>
+            </div>
+
+            <!-- Example Service 4: Language Translator -->
+            <div class="service-card">
+                <div class="service-icon">🌍</div>
+                <h2>Language Translator</h2>
+                <p>Translate text between multiple languages instantly</p>
+                <button class="service-btn service-btn-disabled" onclick="showComingSoon('Language Translator')">
+                    Coming Soon
+                </button>
+            </div>
+
+            <!-- Example Service 5: Code Helper -->
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h2>Code Helper</h2>
+                <p>Get help with coding questions and debugging</p>
+                <button class="service-btn service-btn-disabled" onclick="showComingSoon('Code Helper')">
+                    Coming Soon
+                </button>
+            </div>
+
+            <!-- Example Service 6: Voice Assistant -->
+            <div class="service-card">
+                <div class="service-icon">🎤</div>
+                <h2>Voice Assistant</h2>
+                <p>Interact with services using voice commands</p>
+                <button class="service-btn service-btn-disabled" onclick="showComingSoon('Voice Assistant')">
+                    Coming Soon
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Footer with instructions -->
+        <footer>
+            <p>Built with Django + HTML/CSS/JavaScript</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!-- 
+================================================================================
+HOW TO ADD A NEW SERVICE:
+================================================================================
+
+1. ADD A NEW SERVICE CARD TO THIS PAGE:
+   Copy one of the service-card divs above and modify:
+   - Change the emoji icon
+   - Update the title and description
+   - Change the onclick to point to your new HTML file
+   - Remove "service-btn-disabled" class from the button
+
+2. CREATE THE FRONTEND PAGE:
+   Create a new HTML file (e.g., image-generator.html) in /frontend/
+   Include the necessary UI elements (forms, display areas, etc.)
+
+3. CREATE THE BACKEND LOGIC:
+   In /backend/services/views.py:
+   - Create a new view function for your service
+   - Add your processing logic
+   - Return JSON response
+
+4. REGISTER THE API ENDPOINT:
+   In /backend/services/urls.py:
+   - Add a new path() for your service endpoint
+
+5. CONNECT FRONTEND TO BACKEND:
+   In your new HTML page's JavaScript:
+   - Use fetch() to call your API endpoint
+   - Handle the response and update the UI
+
+Example:
+  Service: "Sentiment Analyzer"
+  Frontend: sentiment.html (form to input text)
+  Backend: views.py (function to analyze sentiment)
+  URL: urls.py (path('sentiment/', views.sentiment_analyzer))
+  Homepage: Add new card with onclick="openService('sentiment.html')"
+================================================================================
+-->

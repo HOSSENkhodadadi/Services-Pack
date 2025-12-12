@@ -6,6 +6,7 @@ Learn more: https://docs.djangoproject.com/en/stable/topics/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -99,8 +100,16 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR.parent / 'frontend']
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR.parent, 'frontend'),
+]
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -112,7 +121,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
     "http://localhost:5500",  # Common port for Live Server extension
     "http://127.0.0.1:5500",
+    # Add your Vercel frontend URL here after deployment
+    # "https://your-frontend.vercel.app",
 ]
 
 # Allow credentials (cookies, authorization headers) in CORS requests
 CORS_ALLOW_CREDENTIALS = True
+
+# For development/testing - allows all origins (Remove in production!)
+CORS_ALLOW_ALL_ORIGINS = True

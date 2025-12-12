@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversational Bot - Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main chat container -->
+    <div class="chat-container">
+        
+        <!-- Header section with back button and title -->
+        <div class="chat-header">
+            <a href="index.html" class="back-button">← Back to Services</a>
+            <h1>💬 Conversational Bot</h1>
+            <p class="subtitle">Ask me anything! I'm here to help.</p>
+        </div>
+
+        <!-- 
+            Chat messages display area
+            This is where all conversation messages will appear
+            Messages are dynamically added via JavaScript
+        -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Welcome message -->
+            <div class="message bot">
+                <div class="message-sender">Bot</div>
+                <div>Hello! I'm your conversational assistant. How can I help you today?</div>
+            </div>
+        </div>
+
+        <!-- 
+            Chat input area
+            User types messages here and clicks send
+        -->
+        <div class="chat-input-area">
+            <input 
+                type="text" 
+                id="messageInput" 
+                class="chat-input" 
+                placeholder="Type your message here..."
+                onkeypress="handleKeyPress(event)"
+            >
+            <button 
+                id="sendButton" 
+                class="send-button" 
+                onclick="sendMessage()"
+            >
+                Send
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Include shared JavaScript functions -->
+    <script src="app.js"></script>
+    
+    <!-- Chatbot-specific JavaScript -->
+    <script src="chatbot.js"></script>
+</body>
+</html>
+
+<!-- 
+================================================================================
+HOW THIS PAGE WORKS:
+================================================================================
+
+1. USER INTERACTION:
+   - User types message in input box
+   - User presses Enter or clicks "Send" button
+   - Message appears in chat window
+
+2. FRONTEND TO BACKEND:
+   - JavaScript (chatbot.js) sends the message to Django API
+   - API URL: http://localhost:8000/api/chatbot/
+   - Method: POST
+   - Format: JSON with {"message": "user's text"}
+
+3. BACKEND PROCESSING:
+   - Django receives the message in /backend/services/views.py
+   - chatbot() function processes it (currently echoes back)
+   - Returns JSON response with bot's reply
+
+4. DISPLAY RESPONSE:
+   - JavaScript receives the response
+   - Adds bot's message to the chat window
+   - Scrolls to show the latest message
+
+================================================================================
+CUSTOMIZATION IDEAS:
+================================================================================
+
+1. Add conversation history:
+   - Store messages in an array
+   - Send conversation context with each request
+   - Bot can reference previous messages
+
+2. Add features:
+   - File upload for documents/images
+   - Voice input/output
+   - Copy message button
+   - Clear chat button
+   - Save conversation history
+
+3. Improve UI:
+   - Add timestamps to messages
+   - Show "bot is typing..." indicator
+   - Add message read receipts
+   - Different themes/colors
+
+4. Connect to real AI:
+   - OpenAI GPT models
+   - Google's PaLM API
+   - Hugging Face models
+   - Custom trained models
+
+================================================================================
+-->
