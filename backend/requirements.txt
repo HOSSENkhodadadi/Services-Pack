@@ -1,0 +1,9 @@
+# Django
+Django>=4.2,<5.0
+django-cors-headers>=4.0.0
+
+# Add your additional dependencies here:
+# openai  # For OpenAI API
+# transformers  # For Hugging Face models
+# requests  # For making HTTP requests to external APIs
+# pillow  # For image processing
