@@ -12,10 +12,31 @@ This file contains all the backend logic for our services.
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from django.http import FileResponse, Http404
+from django.conf import settings
 from groq import Groq
+import os
 
 import json
 
+
+# ============================================================================
+# HEALTH CHECK ENDPOINT
+# ============================================================================
+
+@require_http_methods(["GET"])
+def health_check(request):
+    """
+    Simple endpoint to verify Django backend is running.
+    Test at: http://localhost:8000/api/health/
+    
+    Returns:
+        JSON with status message
+    """
+    return JsonResponse({
+        'status': 'ok',
+        'message': 'Django backend is running!'
+    })
 
 
 # ============================================================================
@@ -76,7 +97,9 @@ def chatbot(request):
             bot_response = "Interesting question! Tell me more."
     """
 
-    client = Groq()
+    client = Groq(
+    api_key=os.environ.get("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"),
+)
     try:
         # Parse the JSON data from the request
         data = json.loads(request.body)

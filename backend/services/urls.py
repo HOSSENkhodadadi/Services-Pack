@@ -11,10 +11,15 @@ The 'name' parameter is used for reverse URL lookup in Django.
 """
 
 from django.urls import path
+from django.views.static import serve
+from django.conf import settings
 from . import views
 
 # All these URLs will be prefixed with /api/ (defined in config/urls.py)
 urlpatterns = [
+    # Health check endpoint: /api/health/
+    path('health/', views.health_check, name='health_check'),
+    
     # Chatbot endpoint: /api/chatbot/
     path('chatbot/', views.chatbot, name='chatbot'),
     
