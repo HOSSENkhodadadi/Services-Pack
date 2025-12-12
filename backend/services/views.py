@@ -98,7 +98,7 @@ def chatbot(request):
     """
 
     client = Groq(
-    api_key=os.environ.get("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"),
+    # api_key=os.environ.get(""),
 )
     try:
         # Parse the JSON data from the request
